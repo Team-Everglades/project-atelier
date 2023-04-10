@@ -11,6 +11,10 @@ const client = require('./database.js')
 // router.post('/questions/ask', controller.questions.submitQuestion)
 // router.put('/answer/report', controller.questions.reportAnswer)
 
+router.get('/loaderio-03691a8a9e4b96aea7c1084802a6e014', (req,res) => {
+    res.sendFile('/home/ec2-user/loaderio-03691a8a9e4b96aea7c1084802a6e014.txt')
+})
+
 // questions route for postgresql db
 router.get('/qa/questions', (req, res) => {
     let productId = req.query.productId;
@@ -83,6 +87,7 @@ router.get('/qa/questions', (req, res) => {
   });
   
 router.get('/qa/questions/:question_id/answers', (req, res) =>{
+    console.log(req.query)
     let questionId = req.params.question_id
     let page = req.query.page || 0
     let count = req.query.count || 5
